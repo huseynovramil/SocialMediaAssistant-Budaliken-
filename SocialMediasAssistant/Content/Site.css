@@ -1,0 +1,108 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+
+.navbar {
+    -webkit-box-shadow: 0 8px 6px -6px #999;
+    -moz-box-shadow: 0 8px 6px -6px #999;
+    box-shadow: 0 8px 6px -6px #999;
+}
+
+#navbar-brand {
+    color: rgb(244, 138, 6);
+}
+
+#bootstrap-override .btn-primary {
+    background-color: rgb(244, 138, 6);
+    border-color: rgb(244, 138, 6);
+}
+
+    #bootstrap-override .btn-primary:hover {
+        background-color: rgb(244, 112, 0);
+        border-color: rgb(237, 112, 0)
+    }
+
+    #bootstrap-override .btn-primary:focus {
+        box-shadow: 0 0 0 0.2rem rgba(244, 138, 6, 0.5);
+    }
+
+
+#navbar:hover {
+    background-color: rgb(244, 138, 6) !important;
+}
+
+    #navbar:hover #navbar-brand {
+        color: white;
+    }
+
+    #navbar:hover .nav-link {
+        color: white;
+    }
+
+    #navbar:hover .nav-item.active .nav-link {
+        font-weight: 600;
+    }
+
+#navbar .nav-link:hover, #navbar .nav-link:target {
+    font-weight: 600;
+}
+
+.jumbotron-main-text {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.jumbotron {
+    padding-top: 2%;
+}
+
+.jumbotron-text {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.jumbotron {
+    background-image: url("../Images/nj2pD6.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.slick-prev:before, .slick-next:before {
+    color: lightgray !important;
+}
+
+.container {
+    margin-top: 10px;
+}
+
+.slick-slide {
+    margin: 0 5px;
+}
+
+.slick-list {
+    margin: 0 -5px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+.modal-body {
+    max-height: calc(100vh - 210px);
+    overflow-y: auto;
+}
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}

@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @RenderSection("styles", false)
+</head>
+<body id="bootstrap-override">
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        @Html.ActionLink("socialmediaassistant", "Index", "Home", new { area = "" }, new {id="navbar-brand", @class = "navbar-brand font-italic" })
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul id="nav-links" class="navbar-nav mr-auto">
+                <li class="nav-item">@Html.ActionLink("Home", "Index", "Home", new { }, new { @class = "nav-link" })</li>
+                <li class="nav-item">@Html.ActionLink("About", "About", "Home", new { }, new { @class = "nav-link" })</li>
+                <li class="nav-item">@Html.ActionLink("Contact", "Contact", "Home", new { }, new { @class = "nav-link" })</li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Facebook
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        @Html.ActionLink("Like Posts", "PagePosts", "Facebook", new { }, htmlAttributes: new { @class = "dropdown-item" })
+                        @Html.ActionLink("Add Post", "AddPagePost", "Facebook", new { }, htmlAttributes: new { @class = "dropdown-item" })
+                        @Html.ActionLink("Add Page", "AddPage", "Facebook", new { }, htmlAttributes: new { @class = "dropdown-item" })
+                        @Html.ActionLink("Like Pages", "Pages", "Facebook", new { }, htmlAttributes: new { @class = "dropdown-item" })
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Instagram
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        @Html.ActionLink("Fav Posts", "Posts", "Instagram", new { }, htmlAttributes: new { @class = "dropdown-item" })
+                        @Html.ActionLink("Add Post", "AddPost", "Instagram", new { }, htmlAttributes: new { @class = "dropdown-item" })
+                        @Html.ActionLink("Follow Users", "Accounts", "Instagram", new { }, htmlAttributes: new { @class = "dropdown-item" })
+                        @Html.ActionLink("Add your Account", "AddAccount", "Instagram", new { }, htmlAttributes: new { @class = "dropdown-item" })
+
+                    </div>
+                </li>
+            </ul>
+            @Html.Partial("_LoginPartial")
+        </div>
+    </nav>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script src="~/Scripts/JavaScript.js"></script>
+</body>
+</html>
