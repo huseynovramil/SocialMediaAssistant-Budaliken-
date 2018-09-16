@@ -50,8 +50,8 @@ $(document).ready(function () {
     let pointsLabel = $('#points');
     function setContent() {
         pointsLabel.text(points);
-        let card = `<div class="fb-post" data-href="`+ contents[currentContentIndex].Link + `"
-            data-width="350" data-show-text="true">
+        let card = `<div class="fb-post mw-100" data-href="`+ contents[currentContentIndex].Link + `"
+            data-width="200" data-show-text="true">
             <blockquote cite="`+ contents[currentContentIndex].Link + `"
                 class="fb-xfbml-parse-ignore"></blockquote>
         </div>`;
