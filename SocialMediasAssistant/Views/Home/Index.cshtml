@@ -8,7 +8,7 @@
     <p class="jumbotron-text lead text-dark d-none d-lg-block" style="width:30%;">Social Media Assistant is a website for increasing
     likes, followers, favs and etc. in sites like 
      Facebook, Instagram</p>
-    <p><a class = "btn btn-primary btn-lg" href="https://localhost/sma/Home/About">Learn more &raquo;</a></p>
+    <p><a class = "btn btn-primary btn-lg" href="@Url.Action("About", "Home", null, Request.Url.Scheme)">Learn more &raquo;</a></p>
 </div>
 
 <div class="row">
@@ -18,7 +18,7 @@
             Using our site you can increase the number of likes of your posts through Facebook.
 
         </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        <p><a class="btn btn-default" href="@Url.Action("AddPagePost", "Facebook", null, Request.Url.Scheme)">Learn more &raquo;</a></p>
     </div>
     <div class="col-md-4">
         <h2>Get more libraries</h2>
