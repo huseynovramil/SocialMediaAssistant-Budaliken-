@@ -80,8 +80,8 @@ $(document).ready(function () {
         });
 
         function setContent(link, posts) {
-            let post = `<label class="btn btn-light col-md-12">
-                    <div class="row">
+            let post = `<label class="btn btn-light col-md-12 mw-100 justify-content-center d-flex">
+                    <div class="row mw-100 justify-content-center d-flex">
                    <input type="radio" class="col-md-12" name="postLinks" autocomplete="off" value="`+ link + `">
             <div class="col-md-12 justify-content-center d-flex" style="padding-top:2%">
             <div class="fb-post" data-href="`+ link + `"
