@@ -2,7 +2,7 @@
 $(document).ready(function () {
     window.fbAsyncInit = function () {
         FB.init({
-            appId: '894196017436373',
+            appId: '253756692014883',
             cookie: true,
             xfbml: true,
             version: 'v3.1'
