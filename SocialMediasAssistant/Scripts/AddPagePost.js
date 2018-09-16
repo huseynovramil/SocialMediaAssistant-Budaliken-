@@ -80,10 +80,10 @@ $(document).ready(function () {
         });
 
         function setContent(link, posts) {
-            let post = `<label class="btn btn-light col-md-12 mw-100 justify-content-center d-flex">
-                    <div class="row mw-100 justify-content-center d-flex">
+            let post = `<label class="btn btn-light col-md-12 mw-100 justify-content-center d-flex p-0">
+                    <div class="row mw-100 justify-content-center d-flex p-0">
                    <input type="radio" class="col-md-12" name="postLinks" autocomplete="off" value="`+ link + `">
-            <div class="col-md-12 justify-content-center d-flex" style="padding-top:2%">
+            <div class="col-md-12 justify-content-center d-flex p-0 p-md-2" style="padding-top:2%">
             <div class="fb-post" data-href="`+ link + `"
             data-width="350" data-show-text="true">
             <blockquote cite="`+ link + `"
