@@ -23,8 +23,8 @@ namespace SocialMediasAssistant.Models
             client.DefaultRequestHeaders.Accept
                 .Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
             string urlParametersForLongLiveToken = "oauth/access_token?grant_type=fb_exchange_token&" +
-                "client_id=894196017436373&" +
-                "client_secret=734989422e19c99b9eedc57a1ede9830&" +
+                "client_id="+ConfigurationManager.AppSettings["FacebookAppId"] +"&" +
+                "client_secret="+ConfigurationManager.AppSettings["FacebookAppSecret"] +"&" +
                 "fb_exchange_token=" + shortLivedAccessToken;
 
             HttpResponseMessage messageForLongLiveAccessToken = client.GetAsync(urlParametersForLongLiveToken).Result;
