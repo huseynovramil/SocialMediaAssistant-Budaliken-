@@ -45,10 +45,6 @@ namespace SocialMediasAssistant.Controllers
             {
                 accountInfos.Add(GetAccountInfo(accessToken));
             }
-            for (int i = 0; i < 3; i++)
-            {
-                accountInfos.AddRange(accountInfos.GetRange(0, accountInfos.Count - 1));
-            }
             return Json(accountInfos,
                 JsonRequestBehavior.AllowGet);
         }
