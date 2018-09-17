@@ -73,13 +73,8 @@ namespace SocialMediasAssistant
                     }
                 }
             };
-            facebookAuthenticationOptions.Scope.Add("manage_pages");
             facebookAuthenticationOptions.Scope.Add("pages_show_list");
-            facebookAuthenticationOptions.Scope.Add("read_insights");
-            facebookAuthenticationOptions.Scope.Add("publish_pages");
             facebookAuthenticationOptions.Scope.Add("email");
-            facebookAuthenticationOptions.Scope.Add("user_photos");
-            facebookAuthenticationOptions.Scope.Add("user_posts");
             facebookAuthenticationOptions.Scope.Add("user_likes");
 
             InstagramAuthenticationOptions instagramAuthenticationOptions = new
