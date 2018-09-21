@@ -9,8 +9,6 @@ let numberOfLikesAfter = 0;
 let contents = [];
 $(document).ready(function () {
     getContent(true);
-
-
     function getContent(isFirst) {
         $.ajax({
             url: 'GetPosts',
@@ -58,7 +56,9 @@ $(document).ready(function () {
         $.ajax({
             url: "GetPostLikes",
             data: {
-                "link":contents[index].Link
+                "link": contents[index].Link,
+                "numberOfPrevLikes": numberOfLikesBefore,
+                "increasePoints": !isBefore
             },
             success: function (response) {
                 console.log(response);

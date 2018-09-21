@@ -202,8 +202,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Common\Cipher.cs" />
+    <Compile Include="Common\CurrentUser.cs" />
     <Compile Include="Common\CustomAuthorizeAttribute.cs" />
     <Compile Include="Common\InstagramAPI.cs" />
+    <Compile Include="Common\UniqueLinkAttribute.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\FacebookController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -236,6 +238,22 @@
     <Compile Include="Migrations\201809090118193_InstagramAccounts1.cs" />
     <Compile Include="Migrations\201809090118193_InstagramAccounts1.Designer.cs">
       <DependentUpon>201809090118193_InstagramAccounts1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809190119390_UniqueLinks.cs" />
+    <Compile Include="Migrations\201809190119390_UniqueLinks.Designer.cs">
+      <DependentUpon>201809190119390_UniqueLinks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809190130370_UniqueLinks1.cs" />
+    <Compile Include="Migrations\201809190130370_UniqueLinks1.Designer.cs">
+      <DependentUpon>201809190130370_UniqueLinks1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809190136350_UniqueLinks2.cs" />
+    <Compile Include="Migrations\201809190136350_UniqueLinks2.Designer.cs">
+      <DependentUpon>201809190136350_UniqueLinks2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809190232265_UniqueLink.cs" />
+    <Compile Include="Migrations\201809190232265_UniqueLink.Designer.cs">
+      <DependentUpon>201809190232265_UniqueLink.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -430,6 +448,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809090118193_InstagramAccounts1.resx">
       <DependentUpon>201809090118193_InstagramAccounts1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809190119390_UniqueLinks.resx">
+      <DependentUpon>201809190119390_UniqueLinks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809190130370_UniqueLinks1.resx">
+      <DependentUpon>201809190130370_UniqueLinks1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809190136350_UniqueLinks2.resx">
+      <DependentUpon>201809190136350_UniqueLinks2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809190232265_UniqueLink.resx">
+      <DependentUpon>201809190232265_UniqueLink.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

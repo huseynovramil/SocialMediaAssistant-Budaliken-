@@ -93,12 +93,24 @@ namespace SocialMediasAssistant.Controllers
                 JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult GetPostLikes(string link)
+        public async Task<JsonResult> GetPostLikes(string link, int numberOfPrevLikes=0, bool increasePoints=false)
         {
             InstagramPost post = context.InstagramPosts.First(c => c.Link == link);
             InstagramMediaInfo mediaInfo = GetMediaInfo(post.ApplicationUser
                 .AccessTokens.First(a => a.Provider == "Instagram").AccessTokenValue);
-            return Json(mediaInfo.data.First(d => d.link == link).likes.count,
+            int count = mediaInfo.data.First(d => d.link == link).likes.count;
+            if (increasePoints)
+            {
+                if(count > numberOfPrevLikes)
+                {
+                    lock (CurrentUser)
+                    {
+                        CurrentUser.Points += 10;
+                    }
+                    await context.SaveChangesAsync();
+                }
+            }
+            return Json( count,
                 JsonRequestBehavior.AllowGet);
         }
 
@@ -118,23 +130,19 @@ namespace SocialMediasAssistant.Controllers
 
         public ActionResult AddPost()
         {
-
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> AddPost(FormCollection form)
+        public async Task<ActionResult> AddPost(InstagramPost post)
         {
-            InstagramPost InstagramPost = new InstagramPost();
             if (ModelState.IsValid)
             {
-
-                InstagramPost.Link = form["Link"];
-                InstagramPost.ApplicationUser = CurrentUser;
-                context.InstagramPosts.Add(InstagramPost);
+                post.ApplicationUser = CurrentUser;
+                context.InstagramPosts.Add(post);
                 await context.SaveChangesAsync();
-                return RedirectToAction("Posts");
+                return RedirectToAction("PagePosts");
             }
             return View();
         }

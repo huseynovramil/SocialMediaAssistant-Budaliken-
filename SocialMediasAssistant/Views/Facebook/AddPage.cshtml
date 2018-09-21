@@ -1,4 +1,4 @@
-﻿@model SocialMediasAssistant.Models.FacebookPagePost
+﻿@model SocialMediasAssistant.Models.FacebookPostPage
 @{
     ViewBag.Title = "AddPage";
 }
@@ -16,7 +16,7 @@
     <div class="form-horizontal">
         <h4>Content</h4>
         <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.ValidationSummary(false, null, new { @class = "text-danger" })
         <div class="form-group">
             <label for="page" class="control-label col-md-2">Facebook Page</label>
             <div class="col-md-10">
@@ -31,8 +31,9 @@
                 </div>
             </div>
         </div>
-        @Html.HiddenFor(p => p.Page.PageId, new { id = "page_id" })
-        @Html.HiddenFor(p => p.Page.AccessToken, new { id = "page_access_token" })
+        @Html.HiddenFor(p => p.PageId, new { id = "page_id" })
+        @Html.HiddenFor(p => p.AccessToken, new { id = "page_access_token" })
+        @Html.HiddenFor(p => p.Link, new { id = "page_link" })
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Add Page" class="btn btn-primary" />

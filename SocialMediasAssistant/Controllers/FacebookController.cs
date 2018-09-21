@@ -56,7 +56,10 @@ namespace SocialMediasAssistant.Controllers
             bool hasLiked = likers.Any(liker => liker == CurrentUser.Name);
             if (hasLiked && increasePointsIfLiked)
             {
-                CurrentUser.Points += 10;
+                lock (CurrentUser)
+                {
+                    CurrentUser.Points += 10;
+                }
                 await context.SaveChangesAsync();
             }
             return Json(hasLiked, JsonRequestBehavior.AllowGet);
@@ -71,7 +74,10 @@ namespace SocialMediasAssistant.Controllers
             bool hasLiked = likers.Any(liked => liked == content.PageId);
             if (hasLiked && increasePointsIfLiked)
             {
-                CurrentUser.Points += 10;
+                lock (CurrentUser)
+                {
+                    CurrentUser.Points += 10;
+                }
                 await context.SaveChangesAsync();
             }
             return Json(hasLiked, JsonRequestBehavior.AllowGet);
@@ -90,24 +96,14 @@ namespace SocialMediasAssistant.Controllers
         [ValidateAntiForgeryToken]
         [HttpPost]
         [ActionName("AddPage")]
-        public async Task<ActionResult> AddPageAsync(FormCollection form)
+        public async Task<ActionResult> AddPageAsync(FacebookPostPage page)
         {
             if (ModelState.IsValid)
-            {
-                string pageId = form["Page.PageId"];
-                if (!context.FacebookPostPages.Any(p => p.PageId == pageId))
-                {
-                    FacebookPostPage page = new FacebookPostPage
-                    {
-                        PageId = pageId,
-                        AccessToken = form["Page.AccessToken"],
-                        ApplicationUser = CurrentUser,
-                        Link = "https://facebook.com/" + pageId
-                    };
-                    context.FacebookPostPages.Add(page);
-                    await context.SaveChangesAsync();
-                    return RedirectToAction("Pages");
-                }
+            { 
+                page.ApplicationUser = CurrentUser;
+                context.FacebookPostPages.Add(page);
+                await context.SaveChangesAsync();
+                return RedirectToAction("Pages");
             }
 
             return View();
@@ -142,39 +138,22 @@ namespace SocialMediasAssistant.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ActionName("AddPagePost")]
-        public async Task<ActionResult> AddPagePostAsync(FormCollection form)
+        public async Task<ActionResult> AddPagePostAsync(FacebookPagePost post)
         {
-            FacebookPagePost content = new FacebookPagePost();
-            string pageId = form["Page.PageId"];
+            post.Page.ApplicationUser = CurrentUser;
+            if (context.FacebookPostPages.Any(p => p.PageId == post.Page.PageId))
+            {
+                post.Page = context.FacebookPostPages.First(p => p.PageId == post.Page.PageId);
+                ModelState["Page.Link"].Errors.Clear();
+            }
             if (ModelState.IsValid)
             {
-
-                if (context.FacebookPostPages == null)
-                {
-                    content.Page = new FacebookPostPage();
-                    content.Page.PageId = pageId;
-                    content.Page.ApplicationUser = CurrentUser;
-                    content.Page.Link = "https://facebook.com/" + pageId;
-                }
-                else if (!context.FacebookPostPages.Any(p => p.PageId == pageId))
-                {
-                    content.Page = new FacebookPostPage();
-                    content.Page.PageId = pageId;
-                    content.Page.ApplicationUser = CurrentUser;
-                    content.Page.Link = "https://facebook.com/" + pageId;
-                }
-                else
-                {
-                    content.Page = context.FacebookPostPages.SingleOrDefault(p => p.PageId == pageId);
-                }
-                content.Page.AccessToken = form["Page.AccessToken"];
-                content.Link = form["Link"];
-                content.ApplicationUser = CurrentUser;
-                context.FacebookPagePosts.Add(content);
+                post.ApplicationUser = CurrentUser;
+                context.FacebookPagePosts.Add(post);
                 await context.SaveChangesAsync();
                 return RedirectToAction("PagePosts");
             }
-            return View();
+            return View(post);
         }
     }
 }

@@ -9,11 +9,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Helpers;
+using System.ComponentModel.DataAnnotations;
 
 namespace SocialMediasAssistant.Models
 {
     public class Content
     {   public int ID { get; set; }
+        [UniqueLink(ErrorMessage = "You have already added this post or page")]
+        [Required]
+        [Index(IsUnique = true)]
+        [StringLength(100)]
         public string Link { set; get; }
         public virtual ApplicationUser ApplicationUser { get; set; }  
     }

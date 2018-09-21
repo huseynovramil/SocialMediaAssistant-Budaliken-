@@ -1,5 +1,8 @@
 ﻿let pages = [];
 $(document).ready(function () {
+    let dropdownList = $('#pages .dropdown-menu');
+    let selected = $('#pagesSelected');
+    let selectPostButton = $('#selectPost,#postLink');
     window.fbAsyncInit = function () {
         FB.init({
             appId: '253756692014883',
@@ -27,7 +30,6 @@ $(document).ready(function () {
                             },
                             success: function (response) {
                                 console.log(response);
-                                let dropdownList = $('#pages .dropdown-menu');
                                 FB.api(
                                     '/me/accounts',
                                     'GET',
@@ -35,18 +37,23 @@ $(document).ready(function () {
                                     function (innerResponse) {
                                         $.each(innerResponse.data, function (index, value) {
                                             pages.push(value);
-                                            let listItem = `<a class="dropdown-item" href="#" data-value="` + index + `">` + value.name + `</a>`;
+                                            let listItem = `<a class="dropdown-item pages" href="#" data-value="` + index + `">` + value.name + `</a>`;
                                             dropdownList.append(listItem);
                                         });
-                                        let selected = $('#pagesSelected');
-                                        let selectPostButton = $('#selectPost,#postLink');
+       
+                                        let dropdownItem = $('.dropdown-item.pages');
+                                        let pageId = $('#page_id').val();
+      
+                                        
                                         let page_id = $('#page_id');
+                                        let page_link = $('#page_link');
                                         let page_access_token = $('#page_access_token');
-                                        $('.dropdown-item').click(function () {
+                                        dropdownItem.click(function () {
                                             let index = $(this).attr('data-value');
                                             selected.val(index);
                                             selected.text($(this).text());
                                             page_id.val(pages[index].id);
+                                            page_link.val("https://facebook.com/" + pages[index].id);
                                             page_access_token.val(pages[index].access_token);
                                             selectPostButton.removeAttr('disabled');
                                             FB.api(
@@ -70,6 +77,11 @@ $(document).ready(function () {
                                                 }
                                             );
                                         });
+                                        if (pageId) {
+                                            let pageIndex = pages.findIndex((value) => value.id === pageId);
+                                            let itemToSelect = $(dropdownItem.get(pageIndex));
+                                            itemToSelect.trigger('click');
+                                        }
                                     });
                             }
                         });
@@ -103,6 +115,7 @@ $(document).ready(function () {
         postLink.val(link);
         postLink.text(link);
     });
+    
     (function (d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) { return; }

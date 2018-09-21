@@ -1,4 +1,4 @@
-﻿@model SocialMediasAssistant.Models.FacebookPagePost
+﻿@model SocialMediasAssistant.Models.InstagramPost
 @{
     ViewBag.Title = "AddPost";
 }
@@ -14,7 +14,7 @@
     <div class="form-horizontal">
         <h4>Content</h4>
         <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.ValidationSummary(false, null, new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(c => c.Link, new { @class = "col-form-label col-md-2" })
             <div class="col-md-10 input-group">
