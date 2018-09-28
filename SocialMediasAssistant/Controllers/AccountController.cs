@@ -89,7 +89,7 @@ namespace SocialMediasAssistant.Controllers
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            var result = await SignInManager.PasswordSignInAsync(model.Username, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -165,7 +165,7 @@ namespace SocialMediasAssistant.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Username};
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -216,7 +216,7 @@ namespace SocialMediasAssistant.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = await UserManager.FindByNameAsync(model.Email);
+                var user = await UserManager.FindByNameAsync(model.Username);
                 if (user == null || !(await UserManager.IsEmailConfirmedAsync(user.Id)))
                 {
                     // Don't reveal that the user does not exist or is not confirmed
@@ -262,7 +262,7 @@ namespace SocialMediasAssistant.Controllers
             {
                 return View(model);
             }
-            var user = await UserManager.FindByNameAsync(model.Email);
+            var user = await UserManager.FindByNameAsync(model.Username);
             if (user == null)
             {
                 // Don't reveal that the user does not exist
@@ -362,6 +362,12 @@ namespace SocialMediasAssistant.Controllers
                         AccessTokenValue = access_token
                     });
                 }
+                if(loginInfo.Login.LoginProvider == "Facebook")
+                {
+                    string name = loginInfo.ExternalIdentity.Claims
+                        .First(p => p.Type.Contains("name") && !p.Type.Contains("schema")).Value;
+                    user.Name = name;
+                }
                 await context.SaveChangesAsync();
             }
         }
@@ -399,7 +405,7 @@ namespace SocialMediasAssistant.Controllers
                     // If the user does not have an account, then prompt the user to create an account
                     ViewBag.ReturnUrl = returnUrl;
                     ViewBag.LoginProvider = loginInfo.Login.LoginProvider;
-                    return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { Email = loginInfo.Email });
+                    return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { Username = loginInfo.DefaultUserName });
             }
         }
 
@@ -431,8 +437,12 @@ namespace SocialMediasAssistant.Controllers
                 .First(p => p.Type.Contains("token") && p.Type.Contains("access")).Value;
 
 
-                user = new ApplicationUser { UserName = model.Email, Email = model.Email, Name = name, AccessTokens = new Collection<AccessToken> { new AccessToken { AccessTokenValue = access_token, Provider = provider } } };
-
+                user = new ApplicationUser { UserName = model.Username,Email = model.Username+"@mail.com", AccessTokens = new Collection<AccessToken> { new AccessToken { AccessTokenValue = access_token, Provider = provider } },Points=10 };
+                if(info.Login.LoginProvider == "Facebook")
+                {
+                    user.Name = name;
+                }
+                
                 var result = await UserManager.CreateAsync(user);
 
                 if (result.Succeeded)

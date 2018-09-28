@@ -74,8 +74,6 @@ namespace SocialMediasAssistant
                 }
             };
             facebookAuthenticationOptions.Scope.Add("pages_show_list");
-            facebookAuthenticationOptions.Scope.Add("email");
-            facebookAuthenticationOptions.Scope.Add("user_likes");
 
             InstagramAuthenticationOptions instagramAuthenticationOptions = new
                 InstagramAuthenticationOptions()

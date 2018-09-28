@@ -29,7 +29,7 @@ namespace SocialMediasAssistant.Controllers
                 c => new
                 {
                     c.Link,
-                    AuthorEmail = c.ApplicationUser.Email,
+                    AuthorEmail = c.ApplicationUser.UserName,
                     c.FullPostId
                 }).ToList(),
                 JsonRequestBehavior.AllowGet);
@@ -43,7 +43,7 @@ namespace SocialMediasAssistant.Controllers
                 c => new
                 {
                     c.Link,
-                    AuthorEmail = c.ApplicationUser.Email
+                    AuthorEmail = c.ApplicationUser.UserName
                 }).ToList(),
                 JsonRequestBehavior.AllowGet);
         }
@@ -83,6 +83,26 @@ namespace SocialMediasAssistant.Controllers
             return Json(hasLiked, JsonRequestBehavior.AllowGet);
         }
 
+        public async Task<JsonResult> GetNumberOfLikes(string link, int numberOfPrevLikes = 0, bool increasePoints = false)
+        {
+            FacebookPostPage page = context.FacebookPostPages
+                .FirstOrDefault(c => c.Link == link);
+            int count = await page.GetNumberOfLikes();
+            if (increasePoints)
+            {
+                if(count > numberOfPrevLikes)
+                {
+                    lock (CurrentUser)
+                    {
+                        CurrentUser.Points += 10;
+                        context.SaveChangesAsync();
+                    }
+                    
+                }
+            }
+            return Json(count, JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult Pages()
         {
             return View();
@@ -96,17 +116,24 @@ namespace SocialMediasAssistant.Controllers
         [ValidateAntiForgeryToken]
         [HttpPost]
         [ActionName("AddPage")]
-        public async Task<ActionResult> AddPageAsync(FacebookPostPage page)
+        public async Task<ActionResult> AddPageAsync(FacebookPostPage page, FormCollection form)
         {
+            page.ApplicationUser = CurrentUser;
+            if(page.ApplicationUser.Points - page.Points < 0)
+            {
+                ModelState.AddModelError("points", "You do not have enough points, Please earn points");
+            }
             if (ModelState.IsValid)
             { 
-                page.ApplicationUser = CurrentUser;
                 context.FacebookPostPages.Add(page);
+                lock (page.ApplicationUser) {
+                page.ApplicationUser.Points -= (int)page.Points;
+                }
                 await context.SaveChangesAsync();
                 return RedirectToAction("Pages");
             }
 
-            return View();
+            return View(page);
         }
         public ActionResult AddPagePost()
         {
@@ -141,15 +168,24 @@ namespace SocialMediasAssistant.Controllers
         public async Task<ActionResult> AddPagePostAsync(FacebookPagePost post)
         {
             post.Page.ApplicationUser = CurrentUser;
+            post.ApplicationUser = CurrentUser;
+            if(post.ApplicationUser.Points-post.Points < 0)
+            {
+                ModelState.AddModelError("points", "You do not have enough points, Please earn points");
+            }
             if (context.FacebookPostPages.Any(p => p.PageId == post.Page.PageId))
             {
                 post.Page = context.FacebookPostPages.First(p => p.PageId == post.Page.PageId);
                 ModelState["Page.Link"].Errors.Clear();
             }
+            ModelState["Page.Points"].Errors.Clear();
             if (ModelState.IsValid)
             {
-                post.ApplicationUser = CurrentUser;
                 context.FacebookPagePosts.Add(post);
+                lock (post.ApplicationUser)
+                {
+                    post.ApplicationUser.Points -= (int)post.Points;
+                }
                 await context.SaveChangesAsync();
                 return RedirectToAction("PagePosts");
             }

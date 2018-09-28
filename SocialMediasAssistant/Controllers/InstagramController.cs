@@ -51,22 +51,29 @@ namespace SocialMediasAssistant.Controllers
 
         public ActionResult AddAccount()
         {
+            string link = CurrentUser.Logins.First(l => l.LoginProvider == "Instagram").ProviderKey;
+            ViewBag.Link = link;
             return View();
         }
 
         [HttpPost]
         [ActionName("AddAccount")]
-        public async Task<ActionResult> AddAccountPostAsync()
+        public async Task<ActionResult> AddAccountPostAsync(InstagramAccount account)
         {
-            InstagramAccount account = new InstagramAccount
+            if(CurrentUser.Points - account.Points < 0)
             {
-                Link = CurrentUser.Logins.Last().ProviderKey,
-                ApplicationUser = CurrentUser
-            };
-            context.InstagramAccounts.Add(account);
+                ModelState.AddModelError("Points", "You do not have enough points, Please earn points");
+            }
+            if (ModelState.IsValid)
+            {
+                account.ApplicationUser = CurrentUser;
+                context.InstagramAccounts.Add(account);
 
-            await context.SaveChangesAsync();
-            return RedirectToAction("Accounts");
+                await context.SaveChangesAsync();
+                return RedirectToAction("Accounts");
+            }
+            ViewBag.Link = account.Link;
+            return View(account);
         }
 
         public ActionResult Posts()
@@ -88,7 +95,7 @@ namespace SocialMediasAssistant.Controllers
                 c => new
                 {
                     c.Link,
-                    AuthorEmail = c.ApplicationUser.Email
+                    AuthorEmail = c.ApplicationUser.UserName
                 }).ToList(),
                 JsonRequestBehavior.AllowGet);
         }
@@ -128,6 +135,8 @@ namespace SocialMediasAssistant.Controllers
             return Json(hasLiked, JsonRequestBehavior.AllowGet);
         }
 
+
+
         public ActionResult AddPost()
         {
             return View();
@@ -137,14 +146,22 @@ namespace SocialMediasAssistant.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> AddPost(InstagramPost post)
         {
+            if(CurrentUser.Points - post.Points < 0)
+            {
+                ModelState.AddModelError("Points", "You do not have enough points, Please earn points");
+            }
             if (ModelState.IsValid)
             {
                 post.ApplicationUser = CurrentUser;
+                lock (post.ApplicationUser)
+                {
+                    post.ApplicationUser.Points -= (int)post.Points;
+                }
                 context.InstagramPosts.Add(post);
                 await context.SaveChangesAsync();
-                return RedirectToAction("PagePosts");
+                return RedirectToAction("Posts");
             }
-            return View();
+            return View(post);
         }
 
     }

@@ -58,7 +58,7 @@ namespace SocialMediasAssistant.Models
                     DecryptedAccessToken = null;
             }
         }
-
+        
 
         public async Task<List<string>> GetLikersAsync(string accessToken)
         {
@@ -80,6 +80,26 @@ namespace SocialMediasAssistant.Models
             return null;
         }
 
+        public async Task<int> GetNumberOfLikes()
+        {
+            client.BaseAddress = new Uri("https://graph.facebook.com/v3.1/");
+
+            client.DefaultRequestHeaders.Accept
+                .Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+            string urlParameters = "me?fields=fan_count&access_token=" + AccessToken;
+            HttpResponseMessage message = await client.GetAsync(urlParameters);
+            if (message.IsSuccessStatusCode)
+            {
+                FacebookPageFanCount count = await message.Content.ReadAsAsync<FacebookPageFanCount>();
+                return count.fan_count;
+            }
+            return -1;
+        }
+
+        private class FacebookPageFanCount
+        {
+            public int fan_count { get; set; }
+        }
         private class FacebookResponseForLikes
         {
             public class User

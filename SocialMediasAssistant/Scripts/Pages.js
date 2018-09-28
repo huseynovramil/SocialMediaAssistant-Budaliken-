@@ -1,12 +1,14 @@
-﻿/// <reference path="jquery-3.3.1.js" />
-let lateContentLikes = 0;
+﻿let lateContentLikes = 0;
 let currentHasLiked = false;
 let points = 0;
 let currentContentIndex = 0;
+let numberOfLikesBefore = 0;
+let numberOfLikesAfter = 0;
+let contents = [];
 $(document).ready(function () {
     window.fbAsyncInit = function () {
         FB.init({
-            appId: '253756692014883',
+            appId: '894196017436373',
             cookie: true,
             xfbml: true,
             version: 'v3.1'
@@ -17,7 +19,6 @@ $(document).ready(function () {
         getContent(true);
 
     };
-
     (function (d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) { return; }
@@ -25,23 +26,19 @@ $(document).ready(function () {
         js.src = "https://connect.facebook.net/en_US/sdk.js";
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
-
-
-
-    let contents = [];
-    async function getContent(isFirst) {
-        return $.ajax({
+    function getContent(isFirst) {
+        $.ajax({
             url: 'GetPages',
-            method: 'get',
             data: {
                 "order": contents.length / 10
             },
             success: function (response) {
+                console.log(response);
                 $.each(response, function () {
                     contents.push(this);
                 });
                 if (isFirst) {
-                    getHasLiked(currentContentIndex, SkipIfLiked);
+                    getNumberOfLikes(currentContentIndex, true, setContent);
                 }
             }
         });
@@ -60,36 +57,40 @@ $(document).ready(function () {
 `;
         cards.html(card);
         FB.XFBML.parse();
-    }
-    $('#refresh').click(function () {
-        getHasLiked(currentContentIndex, IncreasePoints, true);
-    });
-    function IncreasePoints(response) {
-        if (response) {
-            points = points + 10;
-        }
-        currentContentIndex = currentContentIndex + 1;
-        getHasLiked(currentContentIndex, SkipIfLiked);
+        getNumberOfLikes(currentContentIndex, true, null);
     }
 
-    function SkipIfLiked(response) {
-        if (response) {
-            currentContentIndex = currentContentIndex + 1;
-            getHasLiked(currentContentIndex, SkipIfLiked);
+    $('#refresh').click(function () {
+        getNumberOfLikes(currentContentIndex, false, IncreasePointsIfLiked);
+        currentContentIndex = currentContentIndex + 1;
+    });
+    function IncreasePointsIfLiked() {
+        if (numberOfLikesBefore < numberOfLikesAfter) {
+            points = points + 10;
         }
-        else {
-            setContent();
-        }
+        setContent();
     }
-    async function getHasLiked(index, callback, increasePoints = false) {
+
+    async function getNumberOfLikes(index, isBefore, callback) {
         $.ajax({
-            url: "HasLikedPageAsync",
-            method: "POST",
+            url: "GetNumberOfLikes",
             data: {
-                "contentLink": contents[index].Link,
-                "increasePointsIfLiked": increasePoints
+                "link": contents[index].Link,
+                "numberOfPrevLikes": numberOfLikesBefore,
+                "increasePoints": !isBefore
             },
-            success: callback
+            success: function (response) {
+                console.log(response);
+                if (isBefore) {
+                    numberOfLikesBefore = response;
+                }
+                else {
+                    numberOfLikesAfter = response;
+                }
+                if (callback) {
+                    callback();
+                }
+            }
         });
     }
 });

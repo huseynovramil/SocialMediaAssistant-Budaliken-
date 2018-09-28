@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Helpers;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel;
 
 namespace SocialMediasAssistant.Models
 {
@@ -20,6 +21,9 @@ namespace SocialMediasAssistant.Models
         [Index(IsUnique = true)]
         [StringLength(100)]
         public string Link { set; get; }
-        public virtual ApplicationUser ApplicationUser { get; set; }  
+        public virtual ApplicationUser ApplicationUser { get; set; }
+        [Range(5, 100)]
+        [Required]
+        public int Points { get; set; }
     }
 }

@@ -255,6 +255,22 @@
     <Compile Include="Migrations\201809190232265_UniqueLink.Designer.cs">
       <DependentUpon>201809190232265_UniqueLink.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809220454163_ContentPoints.cs" />
+    <Compile Include="Migrations\201809220454163_ContentPoints.Designer.cs">
+      <DependentUpon>201809220454163_ContentPoints.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809260219524_PointsDefaultValue.cs" />
+    <Compile Include="Migrations\201809260219524_PointsDefaultValue.Designer.cs">
+      <DependentUpon>201809260219524_PointsDefaultValue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809260306000_UserPoints.cs" />
+    <Compile Include="Migrations\201809260306000_UserPoints.Designer.cs">
+      <DependentUpon>201809260306000_UserPoints.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809261645070_PointsContentRequired.cs" />
+    <Compile Include="Migrations\201809261645070_PointsContentRequired.Designer.cs">
+      <DependentUpon>201809261645070_PointsContentRequired.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\FacebookPostPage.cs" />
@@ -290,9 +306,13 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\ezgif-1-d41eb5747f.gif" />
+    <Content Include="Images\giphy.gif" />
     <Content Include="Images\nj2pD6.jpg" />
     <Content Include="Images\social-media-730x276.jpg" />
     <Content Include="Images\social-media.jpg" />
+    <Content Include="Images\Thumb-Icon-RGB-1024.png" />
+    <Content Include="Scripts\AddInstagramAccount.js" />
     <Content Include="Scripts\AddInstagramPost.js" />
     <Content Include="Scripts\AddPage.js" />
     <Content Include="Scripts\AddPagePost.js" />
@@ -460,6 +480,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809190232265_UniqueLink.resx">
       <DependentUpon>201809190232265_UniqueLink.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809220454163_ContentPoints.resx">
+      <DependentUpon>201809220454163_ContentPoints.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809260219524_PointsDefaultValue.resx">
+      <DependentUpon>201809260219524_PointsDefaultValue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809260306000_UserPoints.resx">
+      <DependentUpon>201809260306000_UserPoints.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809261645070_PointsContentRequired.resx">
+      <DependentUpon>201809261645070_PointsContentRequired.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

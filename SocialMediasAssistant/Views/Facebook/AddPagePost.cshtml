@@ -40,31 +40,66 @@
                 </button>
             </div>
         </div>
-        <div class="modal fade" id="postsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Select post</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body choose-post-modal-body p-md-3 p-0">
-                        <div id="posts" class="p-0">
-                            <div class="btn-group btn-group-toggle m-0 justify-content-center d-flex p-0" data-toggle="buttons">
+        <div class="form-group">
+            <label for="points" class="control-label col-md-2">Points</label>
+            <div class="col-md-10">
+                <div id="points" class="dropdown">
+                    <button name="Points" class="btn btn-outline-secondary dropdown-toggle" name="page"
+                            type="button" id="pagesSelected" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                        @{
+                            if (Model == null)
+                            {
+                                @:Points
+                            }
+                            else if (Model.Points == 0)
+                            {
+                                @:Points
+                            }
+                            else
+                            {
+                                @Model.Points
+                            }
+                        }
+                    </button>
 
-                                <div class="row mw-100 p-0">
+
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#" data-value="0">5</a>
+                        <a class="dropdown-item" href="#" data-value="1">10</a>
+                        <a class="dropdown-item" href="#" data-value="2">20</a>
+                        <a class="dropdown-item" href="#" data-value="3">50</a>
+                        <a class="dropdown-item" href="#" data-value="4">100</a>
+                    </div>
+                </div>
+                <div class="modal fade" id="postsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Select post</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body choose-post-modal-body p-md-3 p-0">
+                                <div id="posts" class="p-0">
+                                    <div class="btn-group btn-group-toggle m-0 justify-content-center d-flex p-0" data-toggle="buttons">
+
+                                        <div class="row mw-100 p-0">
+                                        </div>
+                                    </div>
                                 </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">Choose</button>
                             </div>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">Choose</button>
-                    </div>
+
                 </div>
             </div>
-
         </div>
+        @Html.HiddenFor(p => p.Points, new { id = "post_points" })
         @Html.HiddenFor(p => p.Page.PageId, new { id = "page_id" })
         @Html.HiddenFor(p => p.Page.Link, new { id = "page_link" })
         @Html.HiddenFor(p => p.Page.AccessToken, new { id = "page_access_token" })

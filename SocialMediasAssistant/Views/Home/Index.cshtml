@@ -2,32 +2,45 @@
     ViewBag.Title = "Home Page";
 }
 
-<div id="mainjumbotron" class="jumbotron">
-    <h1 class="jumbotron-main-text text-dark " style="width:28%;">Social Media Assistant</h1>
+<div id="mainjumbotron" class="jumbotron d-none d-sm-block">
+    <h1 class="jumbotron-main-text text-dark " style="width:28%;">Budaliken</h1>
     <br />
-    <p class="jumbotron-text lead text-dark d-none d-lg-block" style="width:30%;">Social Media Assistant is a website for increasing
-    likes, followers, favs and etc. in sites like 
-     Facebook, Instagram</p>
-    <p><a class = "btn btn-primary btn-lg" href="@Url.Action("About", "Home", null, Request.Url.Scheme)">Learn more &raquo;</a></p>
+    <p class="jumbotron-text lead text-dark d-none d-lg-block" style="width:30%;">
+        Budaliken is a website for increasing
+        likes, followers, favs and etc. in sites like
+        Facebook, Instagram
+    </p>
+    <p><a class="btn btn-primary btn-lg" href="@Url.Action("About", "Home", null, Request.Url.Scheme)">Learn more &raquo;</a></p>
 </div>
 
 <div class="row">
-    <div class="col-md-4">
-        <h2>Get Facebook Likes</h2>
-        <p>
-            Using our site you can increase the number of likes of your posts through Facebook.
+    <div class="card-deck">
+        <div class="card">
+            <div class="card-body">
+                <h2>Get Facebook Likes</h2>
+                <img class="img-fluid mx-auto" src="~/Images/Thumb-Icon-RGB-1024.png" />
+                <p>
+                    Using Budaliken you can increase the number of likes of your posts through Facebook.
 
-        </p>
-        <p><a class="btn btn-default" href="@Url.Action("AddPagePost", "Facebook", null, Request.Url.Scheme)">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+                </p>
+                <p><a class="btn btn-primary" href="@Url.Action("AddPagePost", "Facebook", null, Request.Url.Scheme)">Learn more &raquo;</a></p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h2>Get Instagram favs</h2>
+                <img class="img-fluid mx-auto" src="~/Images/giphy.gif" />
+                <p>Budaliken allows you to increase the favs of your post in Instagram</p>
+                <p><a class="btn btn-primary" href="@Url.Action("AddPost", "Instagram", null, Request.Url.Scheme)">Learn more &raquo;</a></p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h2>Get Followers</h2>
+                <img style="width:430px" class="img-fluid mx-auto" src="~/Images/ezgif-1-d41eb5747f.gif" />
+                <p>Wanna increase the number of followers? Go ahead</p>
+                <p><a class="btn btn-primary" href="@Url.Action("AddAccount", "Instagram", null, Request.Url.Scheme)">Learn more &raquo;</a></p>
+            </div>
+        </div>
     </div>
 </div>

@@ -5,7 +5,7 @@ $(document).ready(function () {
     let selectPostButton = $('#selectPost,#postLink');
     window.fbAsyncInit = function () {
         FB.init({
-            appId: '253756692014883',
+            appId: '894196017436373',
             cookie: true,
             xfbml: true,
             version: 'v3.1'
@@ -40,22 +40,22 @@ $(document).ready(function () {
                                             let listItem = `<a class="dropdown-item pages" href="#" data-value="` + index + `">` + value.name + `</a>`;
                                             dropdownList.append(listItem);
                                         });
-       
-                                        let dropdownItem = $('.dropdown-item.pages');
+                                        let pointsDropdownItem = $('#points .dropdown-item');
+                                        let pagesDropdownItem = $('#pages .dropdown-item');
                                         let pageId = $('#page_id').val();
-      
-                                        
+
+
                                         let page_id = $('#page_id');
                                         let page_link = $('#page_link');
                                         let page_access_token = $('#page_access_token');
-                                        dropdownItem.click(function () {
+                                        let post_points = $('#post_points');
+                                        pagesDropdownItem.click(function () {
                                             let index = $(this).attr('data-value');
                                             selected.val(index);
                                             selected.text($(this).text());
                                             page_id.val(pages[index].id);
                                             page_link.val("https://facebook.com/" + pages[index].id);
                                             page_access_token.val(pages[index].access_token);
-                                            selectPostButton.removeAttr('disabled');
                                             FB.api(
                                                 '/' + pages[index].id + '/posts',
                                                 'GET',
@@ -76,10 +76,20 @@ $(document).ready(function () {
                                                     FB.XFBML.parse();
                                                 }
                                             );
+                                            selectPostButton.removeAttr('disabled');
                                         });
+                                        pointsDropdownItem.click(function () {
+                                            let index = $(this).attr('data-value');
+                                            let selected = $(this).parent('.dropdown-menu').siblings('.btn');
+                                            post_points.val($(this).text());
+                    
+                                            selected.val(index);
+                                            selected.text($(this).text());
+                                        });
+
                                         if (pageId) {
                                             let pageIndex = pages.findIndex((value) => value.id === pageId);
-                                            let itemToSelect = $(dropdownItem.get(pageIndex));
+                                            let itemToSelect = $(pagesDropdownItem.get(pageIndex));
                                             itemToSelect.trigger('click');
                                         }
                                     });
@@ -115,7 +125,7 @@ $(document).ready(function () {
         postLink.val(link);
         postLink.text(link);
     });
-    
+
     (function (d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) { return; }

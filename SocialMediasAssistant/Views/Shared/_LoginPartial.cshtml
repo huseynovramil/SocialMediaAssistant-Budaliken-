@@ -5,8 +5,8 @@
     {
         @Html.AntiForgeryToken()
 
-        <ul class="nav navbar-nav navbar-right ">
-            <li class="nav-item">
+        <ul class="nav navbar-nav navbar-right">
+            <li id="navPointsLabel" class="nav-item bg-white rounded">
                 @{int points = SocialMediasAssistant.Common.CurrentUser.GetCurrentUser(User.Identity.GetUserId()).Points;
                     if (points == 0)
                     {

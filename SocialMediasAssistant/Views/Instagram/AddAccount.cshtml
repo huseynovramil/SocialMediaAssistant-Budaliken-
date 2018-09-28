@@ -1,12 +1,58 @@
-﻿
+﻿@model SocialMediasAssistant.Models.InstagramAccount
 @{
     ViewBag.Title = "Add Account";
 }
 
 <h2>Add Account</h2>
 @using (Html.BeginForm())
-{ 
-    <h5>You want to add Instagram account to get followers?</h5>
-    <input type="submit" class="btn btn-primary" value="Yes"/>
+{
+    <div class="form-horizontal">
+        <h4>Add Account</h4>
+        <hr />
+        @Html.ValidationSummary(false, null, new { @class = "text-danger" })
+        <div class="form-group">
+            <label for="points" class="control-label col-md-2">Points</label>
+            <div class="col-md-10">
+                <div id="points" class="dropdown">
+                    <button name="Points" class="btn btn-outline-secondary dropdown-toggle" name="page"
+                            type="button" id="pointsSelected" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                        @{
+                            if (Model == null)
+                            {
+                                @:Points
+                            }
+                            else if (Model.Points == 0)
+                            {
+                                @:Points
+                            }
+                            else
+                            {
+                                @Model.Points
+                            }
+                        }
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#" data-value="0">5</a>
+                        <a class="dropdown-item" href="#" data-value="1">10</a>
+                        <a class="dropdown-item" href="#" data-value="2">20</a>
+                        <a class="dropdown-item" href="#" data-value="3">50</a>
+                        <a class="dropdown-item" href="#" data-value="4">100</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input id="addAccount" type="submit" disabled class="btn btn-primary" value="Yes" />
+            </div>
+        </div>
+        <input type="hidden" value="@ViewBag.Link" name="Link" />
+        @Html.HiddenFor(a => a.Points, new { id = "account_points" })
+
+    </div>
+}
+@section scripts{
+    <script src="~/Scripts/AddInstagramAccount.js"></script>
 }
 

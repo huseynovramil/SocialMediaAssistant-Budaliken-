@@ -6,40 +6,73 @@
 <h2>AddPage</h2>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.5/umd/popper.min.js"></script>
 <script src="~/Scripts/jquery-3.3.1.min.js"></script>
-<script src="~/Scripts/AddPagePost.js"></script>
+<script src="~/Scripts/AddPage.js"></script>
 
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        <h4>Content</h4>
-        <hr />
-        @Html.ValidationSummary(false, null, new { @class = "text-danger" })
-        <div class="form-group">
-            <label for="page" class="control-label col-md-2">Facebook Page</label>
-            <div class="col-md-10">
-                <div id="pages" class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" name="page"
-                            type="button" id="pagesSelected" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
-                        Select your page
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    </div>
+<div class="form-horizontal">
+    <h4>Content</h4>
+    <hr />
+    @Html.ValidationSummary(false, null, new { @class = "text-danger" })
+    <div class="form-group">
+        <label for="page" class="control-label col-md-2">Facebook Page</label>
+        <div class="col-md-10">
+            <div id="pages" class="dropdown">
+                <button class="btn btn-outline-secondary dropdown-toggle" name="page"
+                        type="button" id="pagesSelected" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                    Select your page
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 </div>
             </div>
         </div>
-        @Html.HiddenFor(p => p.PageId, new { id = "page_id" })
-        @Html.HiddenFor(p => p.AccessToken, new { id = "page_access_token" })
-        @Html.HiddenFor(p => p.Link, new { id = "page_link" })
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Add Page" class="btn btn-primary" />
+    </div>
+    <div class="form-group">
+        <label for="points" class="control-label col-md-2">Points</label>
+        <div class="col-md-10">
+            <div id="points" class="dropdown">
+                <button class="btn btn-outline-secondary dropdown-toggle" name="page"
+                        type="button" id="pagesSelected" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                    @{
+                        if (Model == null)
+                        {
+                            @:Points
+                        }
+                        else if (Model.Points == 0)
+                        {
+                            @:Points
+                        }
+                        else
+                        {
+                            @Model.Points
+                        }
+                    }
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#" data-value="0">5</a>
+                    <a class="dropdown-item" href="#" data-value="1">10</a>
+                    <a class="dropdown-item" href="#" data-value="2">20</a>
+                    <a class="dropdown-item" href="#" data-value="3">50</a>
+                    <a class="dropdown-item" href="#" data-value="4">100</a>
+                </div>
             </div>
         </div>
     </div>
+    @Html.HiddenFor(p => p.Points, new { id = "page_points"})
+    @Html.HiddenFor(p => p.PageId, new { id = "page_id" })
+    @Html.HiddenFor(p => p.AccessToken, new { id = "page_access_token" })
+    @Html.HiddenFor(p => p.Link, new { id = "page_link" })
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Add Page" class="btn btn-primary" />
+        </div>
+    </div>
+</div>
 }
 <script src="~/Scripts/GetNameToken.js"></script>
 @section Scripts {

@@ -16,6 +16,10 @@ namespace SocialMediasAssistant.Common
         //}
         public override bool IsValid(object value)
         {
+            if(value == null)
+            {
+                return true;
+            }
             ApplicationDbContext context = new ApplicationDbContext();
             if (context.Contents.Any(c => c.Link == value.ToString()))
             {

@@ -12,6 +12,14 @@ $(document).ready(function () {
             instgrm.Embeds.process();
         }
     });
+    let post_points = $('#post_points');
+    $('#points .dropdown-item').click(function () {
+        let index = $(this).attr('data-value');
+        let selected = $(this).parent('.dropdown-menu').siblings('.btn');
+        selected.val(index);
+        selected.text($(this).text());
+        post_points.val($(this).text());
+    });
     let postLink = $('#postLink');
     $('#postsModal').on('hidden.bs.modal', function (e) {
         let link = $('input[name=postLinks]:checked').val();

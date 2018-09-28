@@ -10,6 +10,7 @@ using SocialMediasAssistant.Common;
 using System.Configuration;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace SocialMediasAssistant.Models
 {
@@ -19,6 +20,7 @@ namespace SocialMediasAssistant.Models
         public virtual Collection<Content> Contents { get; set; }
         public virtual Collection<AccessToken> AccessTokens { get; set; }
         public string Name { get; set; }
+        [DefaultValue(10)]
         public int Points { get; set; }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
