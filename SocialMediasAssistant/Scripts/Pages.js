@@ -8,7 +8,7 @@ let contents = [];
 $(document).ready(function () {
     window.fbAsyncInit = function () {
         FB.init({
-            appId: '253756692014883',
+            appId: '894196017436373',
             cookie: true,
             xfbml: true,
             version: 'v3.1'

@@ -10,7 +10,7 @@
     <meta name="theme-color" content="#ffffff">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Social media Assistant</title>
+    <title>@ViewBag.Title - Budaliken</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @RenderSection("styles", false)
@@ -24,18 +24,18 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul id="nav-links" class="navbar-nav mr-auto">
-                <li class="nav-item">@Html.ActionLink("Home", "Index", "Home", new { }, new { @class = "nav-link" })</li>
-                <li class="nav-item">@Html.ActionLink("About", "About", "Home", new { }, new { @class = "nav-link" })</li>
-                <li class="nav-item">@Html.ActionLink("Contact", "Contact", "Home", new { }, new { @class = "nav-link" })</li>
+                <li class="nav-item">@Html.ActionLink(Resource.Home, "Index", "Home", new { }, new { @class = "nav-link" })</li>
+                <li class="nav-item">@Html.ActionLink(Resource.About, "About", "Home", new { }, new { @class = "nav-link" })</li>
+                <li class="nav-item">@Html.ActionLink(Resource.Contact, "Contact", "Home", new { }, new { @class = "nav-link" })</li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Facebook
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        @Html.ActionLink("Like Posts", "PagePosts", "Facebook", new { }, htmlAttributes: new { @class = "dropdown-item" })
-                        @Html.ActionLink("Add Post", "AddPagePost", "Facebook", new { }, htmlAttributes: new { @class = "dropdown-item" })
-                        @Html.ActionLink("Add Page", "AddPage", "Facebook", new { }, htmlAttributes: new { @class = "dropdown-item" })
-                        @Html.ActionLink("Like Pages", "Pages", "Facebook", new { }, htmlAttributes: new { @class = "dropdown-item" })
+                        @Html.ActionLink(Resource.LikePosts, "PagePosts", "Facebook", new { }, htmlAttributes: new { @class = "dropdown-item" })
+                        @Html.ActionLink(Resource.AddPost, "AddPagePost", "Facebook", new { }, htmlAttributes: new { @class = "dropdown-item" })
+                        @Html.ActionLink(Resource.AddPost, "AddPage", "Facebook", new { }, htmlAttributes: new { @class = "dropdown-item" })
+                        @Html.ActionLink(Resource.LikePages, "Pages", "Facebook", new { }, htmlAttributes: new { @class = "dropdown-item" })
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -43,10 +43,10 @@
                         Instagram
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        @Html.ActionLink("Fav Posts", "Posts", "Instagram", new { }, htmlAttributes: new { @class = "dropdown-item" })
-                        @Html.ActionLink("Add Post", "AddPost", "Instagram", new { }, htmlAttributes: new { @class = "dropdown-item" })
-                        @Html.ActionLink("Follow Users", "Accounts", "Instagram", new { }, htmlAttributes: new { @class = "dropdown-item" })
-                        @Html.ActionLink("Add your Account", "AddAccount", "Instagram", new { }, htmlAttributes: new { @class = "dropdown-item" })
+                        @Html.ActionLink(Resource.LikePosts, "Posts", "Instagram", new { }, htmlAttributes: new { @class = "dropdown-item" })
+                        @Html.ActionLink(Resource.AddPost, "AddPost", "Instagram", new { }, htmlAttributes: new { @class = "dropdown-item" })
+                        @Html.ActionLink(Resource.FollowUsers, "Accounts", "Instagram", new { }, htmlAttributes: new { @class = "dropdown-item" })
+                        @Html.ActionLink(Resource.AddAccount, "AddAccount", "Instagram", new { }, htmlAttributes: new { @class = "dropdown-item" })
 
                     </div>
                 </li>
