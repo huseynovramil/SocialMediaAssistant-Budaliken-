@@ -53,28 +53,27 @@
     </ul>
 
 }
-        }
-        else
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        @using (Html.BeginForm("SetCulture", "Home", FormMethod.Post, new { id = "languageSelect" }))
         {
-<ul class="nav navbar-nav navbar-right">
-    @using (Html.BeginForm("SetCulture", "Home", FormMethod.Post, new { id = "languageSelect" }))
-    {
-        @Html.AntiForgeryToken();
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                @{
-                    string culture = Culture.ToLower();
-                    string source = "/Images/" + culture + ".png";
-                }
-                <img src="@source" />&nbsp;@culture
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <input name="culture" style="cursor:pointer" type="submit" value="AZE" class="dropdown-item" />
-                <input name="culture" style="cursor:pointer" type="submit" value="TR" class="dropdown-item" />
-                <input name="culture" style="cursor:pointer" type="submit" value="ENG" class="dropdown-item" />
-            </div>
-        </li>
-    }
-    <li class="nav-item">@Html.ActionLink(Resource.Login, "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "nav-link" })</li>
-</ul>
+            @Html.AntiForgeryToken();
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    @{
+                        string culture = Culture.ToLower();
+                        string source = "/Images/" + culture + ".png";
+                    }
+                    <img src="@source" />&nbsp;@culture
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <input name="culture" style="cursor:pointer" type="submit" value="AZE" class="dropdown-item" />
+                    <input name="culture" style="cursor:pointer" type="submit" value="TR" class="dropdown-item" />
+                    <input name="culture" style="cursor:pointer" type="submit" value="ENG" class="dropdown-item" />
+                </div>
+            </li>
+        }
+        <li class="nav-item">@Html.ActionLink(Resource.Login, "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "nav-link" })</li>
+    </ul>
 
