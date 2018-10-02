@@ -1,60 +1,65 @@
 ﻿@using Microsoft.AspNet.Identity
 @if (Request.IsAuthenticated)
 {
-    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
-    {
-        @Html.AntiForgeryToken()
 
-<ul class="nav navbar-nav navbar-right">
-    @using (Html.BeginForm("SetCulture", "Home", FormMethod.Post, new { id = "languageSelect" }))
-    {
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                @{
-                    string culture = Culture.ToLower();
-                    string source = "/Images/" + culture + ".png";
-                }
-                <img src="@source" />&nbsp;@culture
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <input name="culture" style="cursor:pointer" type="submit" value="AZE" class="dropdown-item" />
-                <input name="culture" style="cursor:pointer" type="submit" value="TR" class="dropdown-item" />
-                <input name="culture" style="cursor:pointer" type="submit" value="ENG" class="dropdown-item" />
-            </div>
-        </li>
-    }
-    <li id="navPointsLabel" class="nav-item bg-white rounded">
-        @{int points = SocialMediasAssistant.Common.CurrentUser.GetCurrentUser(User.Identity.GetUserId()).Points;
-            if (points == 0)
-            {
-                <a class="nav-link text-danger">@Resource.Points: @points</a>
-            }
-            else if (points < 50)
-            {
-                <a class="nav-link text-info">@Resource.Points: @points</a>
-            }
-            else if (points < 100)
-            {
-                <a class="nav-link text-success">@Resource.Points: @points</a>
-            }
-            else
-            {
-                <a class="nav-link text-primary">@Resource.Points: @points</a>
-            }
+
+    <ul class="nav navbar-nav navbar-right">
+        @using (Html.BeginForm("SetCulture", "Home", FormMethod.Post, new { id = "languageSelect" }))
+        {
+            @Html.AntiForgeryToken()
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    @{
+                        string culture = Culture.ToLower();
+                        string source = "/Images/" + culture + ".png";
+                    }
+                    <img src="@source" />&nbsp;@culture
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <input name="culture" style="cursor:pointer" type="submit" value="AZE" class="dropdown-item" />
+                    <input name="culture" style="cursor:pointer" type="submit" value="TR" class="dropdown-item" />
+                    <input name="culture" style="cursor:pointer" type="submit" value="ENG" class="dropdown-item" />
+                </div>
+            </li>
         }
-    </li>
-    <li class="nav-item">
-        @Html.ActionLink(Resource.Hello + " " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "nav-link" })
-    </li>
-    <li class="nav-item"><a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">@Resource.LogOff</a></li>
-</ul>
-    }
+        <li id="navPointsLabel" class="nav-item bg-white rounded">
+            @{int points = SocialMediasAssistant.Common.CurrentUser.GetCurrentUser(User.Identity.GetUserId()).Points;
+                if (points == 0)
+                {
+                    <a class="nav-link text-danger">@Resource.Points: @points</a>
+                }
+                else if (points < 50)
+                {
+                    <a class="nav-link text-info">@Resource.Points: @points</a>
+                }
+                else if (points < 100)
+                {
+                    <a class="nav-link text-success">@Resource.Points: @points</a>
+                }
+                else
+                {
+                    <a class="nav-link text-primary">@Resource.Points: @points</a>
+                }
+            }
+        </li>
+        <li class="nav-item">
+            @Html.ActionLink(Resource.Hello + " " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "nav-link" })
+        </li>
+        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+        {
+            @Html.AntiForgeryToken()
+            <li class="nav-item"><a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">@Resource.LogOff</a></li>
+        }
+    </ul>
+
 }
-else
-{
+        }
+        else
+        {
 <ul class="nav navbar-nav navbar-right">
     @using (Html.BeginForm("SetCulture", "Home", FormMethod.Post, new { id = "languageSelect" }))
     {
+        @Html.AntiForgeryToken();
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 @{
@@ -72,4 +77,4 @@ else
     }
     <li class="nav-item">@Html.ActionLink(Resource.Login, "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "nav-link" })</li>
 </ul>
-}
+

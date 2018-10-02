@@ -20,6 +20,8 @@ namespace SocialMediasAssistant.Controllers
 
             return View();
         }
+
+        [ValidateAntiForgeryToken]
         [HttpPost]
         public ActionResult SetCulture(string culture)
         {
