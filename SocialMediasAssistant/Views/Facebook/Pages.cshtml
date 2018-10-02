@@ -1,9 +1,9 @@
 ﻿
 @{
-    ViewBag.Title = Resource.Pages;
+    ViewBag.Title = "Pages";
 }
 
-<h2>@ViewBag.Title</h2>
+<h2>Pages</h2>
 
 <script src="~/Scripts/jquery-3.3.1.min.js"></script>
 <script src="~/Scripts/FacebookSDK.js"></script>
@@ -12,7 +12,7 @@
 <div class="container">
     <div class="row">
         <button type="button" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#exampleModal">
-            @Resource.EarnPointsFacebookPages
+            Get Points liking Facebook posts
         </button>
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -32,8 +32,8 @@
                         <div class="mr-auto">
                             <h4 class="text-success">Points: <span id="points" class="text-success">0</span></h4>
                         </div>
-                        <input id="refresh" value="@Resource.Refresh" type="button" class="btn btn-outline-success float-right" />
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">@Resource.Close</button>
+                        <input id="refresh" value="Refresh" type="button" class="btn btn-outline-success float-right" />
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>

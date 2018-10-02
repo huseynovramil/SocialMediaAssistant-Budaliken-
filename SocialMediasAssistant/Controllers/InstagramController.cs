@@ -3,13 +3,11 @@ using SocialMediasAssistant.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using System.Data.Entity;
 using static SocialMediasAssistant.Common.InstagramAPI;
 
 namespace SocialMediasAssistant.Controllers
@@ -34,13 +32,14 @@ namespace SocialMediasAssistant.Controllers
 
         public JsonResult GetAccounts(int order)
         {
-            IEnumerable<string> accessTokens = context.GetInstagramAccounts(CurrentUser.UserName)
+            List<string> accessTokens = context.InstagramAccounts.Include("ApplicationUser")
+                .OrderBy(c => c.ID)
                 .Skip(10 * order).Take(10).ToList().Select(
                 c =>
                     context.Users.First(u => u.Logins
                     .Any(l => l.ProviderKey == c.Link)).AccessTokens
                     .First(a => a.Provider == "Instagram").AccessTokenValue
-                );
+                ).ToList();
             List<AccountInfo> accountInfos = new List<AccountInfo>();
             foreach (string accessToken in accessTokens)
             {
@@ -91,7 +90,7 @@ namespace SocialMediasAssistant.Controllers
         public JsonResult GetPosts(int order)
         {
 
-            return Json(context.GetInstagramPosts(CurrentUser.UserName)
+            return Json(context.InstagramPosts.Include("ApplicationUser").OrderBy(c => c.ID)
                 .Skip(10 * order).Take(10).ToList().Select(
                 c => new
                 {

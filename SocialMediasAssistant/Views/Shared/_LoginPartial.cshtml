@@ -5,71 +5,38 @@
     {
         @Html.AntiForgeryToken()
 
-<ul class="nav navbar-nav navbar-right">
-    @using (Html.BeginForm("SetCulture", "Home", FormMethod.Post, new { id = "languageSelect" }))
-    {
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                @{
-                    string culture = Culture.ToLower();
-                    string source = "/sma/Images/" + culture + ".png";
+        <ul class="nav navbar-nav navbar-right">
+            <li id="navPointsLabel" class="nav-item bg-white rounded">
+                @{int points = SocialMediasAssistant.Common.CurrentUser.GetCurrentUser(User.Identity.GetUserId()).Points;
+                    if (points == 0)
+                    {
+                        <a class="nav-link text-danger">Points: @points</a>
+                    }
+                    else if (points < 50)
+                    {
+                        <a class="nav-link text-info">Points: @points</a>
+                    }
+                    else if (points < 100)
+                    {
+                        <a class="nav-link text-success">Points: @points</a>
+                    }
+                    else
+                    {
+                        <a class="nav-link text-primary">Points: @points</a>
+                    }
                 }
-                <img src="~@source" />&nbsp;@culture
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <input name="culture" style="cursor:pointer" type="submit" value="AZE" class="dropdown-item" />
-                <input name="culture" style="cursor:pointer" type="submit" value="TR" class="dropdown-item" />
-                <input name="culture" style="cursor:pointer" type="submit" value="ENG" class="dropdown-item" />
-            </div>
-        </li>
-    }
-    <li id="navPointsLabel" class="nav-item bg-white rounded">
-        @{int points = SocialMediasAssistant.Common.CurrentUser.GetCurrentUser(User.Identity.GetUserId()).Points;
-            if (points == 0)
-            {
-                <a class="nav-link text-danger">@Resource.Points: @points</a>
-            }
-            else if (points < 50)
-            {
-                <a class="nav-link text-info">@Resource.Points: @points</a>
-            }
-            else if (points < 100)
-            {
-                <a class="nav-link text-success">@Resource.Points: @points</a>
-            }
-            else
-            {
-                <a class="nav-link text-primary">@Resource.Points: @points</a>
-            }
-        }
-    </li>
-    <li class="nav-item">
-        @Html.ActionLink(Resource.Hello + " " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "nav-link" })
-    </li>
-    <li class="nav-item"><a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">@Resource.LogOff</a></li>
-</ul>
+            </li>
+            <li class="nav-item">
+                @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "nav-link" })
+            </li>
+            <li class="nav-item"><a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+        </ul>
     }
 }
 else
 {
-<ul class="nav navbar-nav navbar-right">
-    @using (Html.BeginForm("SetCulture", "Home", FormMethod.Post, new { id = "languageSelect" }))
-    {
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                @{
-                    string culture = Culture.ToLower();
-                    string source = "/sma/Images/" + culture + ".png";
-                }
-                <img src="@source" />&nbsp;@culture
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <input name="culture" style="cursor:pointer" type="submit" value="AZE" class="dropdown-item" />
-                <input name="culture" style="cursor:pointer" type="submit" value="TR" class="dropdown-item" />
-                <input name="culture" style="cursor:pointer" type="submit" value="ENG" class="dropdown-item" />
-            </div>
-        </li>
-    }
-    <li class="nav-item">@Html.ActionLink(Resource.Login, "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "nav-link" })</li>
-</ul>
+    <ul class="nav navbar-nav navbar-right">
+        <li class="nav-item">@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "nav-link" })</li>
+        <li class="nav-item">@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "nav-link" })</li>
+    </ul>
 }

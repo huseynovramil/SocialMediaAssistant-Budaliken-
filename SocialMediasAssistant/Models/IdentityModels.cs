@@ -11,7 +11,6 @@ using System.Configuration;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 
 namespace SocialMediasAssistant.Models
 {
@@ -20,10 +19,8 @@ namespace SocialMediasAssistant.Models
     {
         public virtual Collection<Content> Contents { get; set; }
         public virtual Collection<AccessToken> AccessTokens { get; set; }
-        [Display(Name = "Name", ResourceType = typeof(Resources.Resource))]
         public string Name { get; set; }
         [DefaultValue(10)]
-        [Display(Name = "Points", ResourceType = typeof(Resources.Resource))]
         public int Points { get; set; }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
@@ -42,44 +39,6 @@ namespace SocialMediasAssistant.Models
         public DbSet<InstagramPost> InstagramPosts { get; set; }
         public DbSet<InstagramAccount> InstagramAccounts { get; set; }
         public DbSet<AccessToken> AccessTokens { get; set; }
-
-        public IEnumerable<FacebookPostPage> GetFacebookPostPages(string userName)
-        {
-            return FacebookPostPages.Include("ApplicationUser").Where(c => c.ApplicationUser.UserName != userName)
-                .AsEnumerable().OrderByDescending(c =>
-            {
-                Random random = new Random();
-                return random.NextDouble() - c.Points / 100;
-            });
-        }
-
-        public IEnumerable<FacebookPagePost> GetFacebookPagePosts(string userName)
-        {
-            return FacebookPagePosts.Include("ApplicationUser").Where(c => c.ApplicationUser.UserName != userName).AsEnumerable().OrderByDescending(c =>
-            {
-                Random random = new Random();
-                return random.NextDouble() - c.Points / 100;
-            });
-        }
-
-        public IEnumerable<InstagramPost> GetInstagramPosts(string userName)
-        {
-            return InstagramPosts.Include("ApplicationUser").Where(c => c.ApplicationUser.UserName != userName).AsEnumerable().OrderByDescending(c =>
-            {
-                Random random = new Random();
-                return random.NextDouble() - c.Points / 100;
-            });
-        }
-
-        public IEnumerable<InstagramAccount> GetInstagramAccounts(string userName)
-        {
-            return InstagramAccounts.Include("ApplicationUser").Where(c => c.ApplicationUser.UserName != userName).AsEnumerable().OrderByDescending(c =>
-            {
-                Random random = new Random();
-                return random.NextDouble() - c.Points / 100;
-            });
-        }
-
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

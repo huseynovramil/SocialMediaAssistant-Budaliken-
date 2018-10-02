@@ -1,9 +1,9 @@
 ﻿@model SocialMediasAssistant.Models.FacebookPostPage
 @{
-    ViewBag.Title = Resource.AddPage;
+    ViewBag.Title = "AddPage";
 }
 
-<h2>@ViewBag.Title</h2>
+<h2>AddPage</h2>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.5/umd/popper.min.js"></script>
 <script src="~/Scripts/jquery-3.3.1.min.js"></script>
 <script src="~/Scripts/AddPage.js"></script>
@@ -14,17 +14,17 @@
     @Html.AntiForgeryToken()
 
 <div class="form-horizontal">
-    <h4>@Resource.Page</h4>
+    <h4>Content</h4>
     <hr />
     @Html.ValidationSummary(false, null, new { @class = "text-danger" })
     <div class="form-group">
-        <label for="page" class="control-label col-md-2">@Resource.FacebookPage</label>
+        <label for="page" class="control-label col-md-2">Facebook Page</label>
         <div class="col-md-10">
             <div id="pages" class="dropdown">
                 <button class="btn btn-outline-secondary dropdown-toggle" name="page"
                         type="button" id="pagesSelected" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
-                    @Resource.SelectPage
+                    Select your page
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 </div>
@@ -32,7 +32,7 @@
         </div>
     </div>
     <div class="form-group">
-        <label for="points" class="control-label col-md-2">@Resource.Points</label>
+        <label for="points" class="control-label col-md-2">Points</label>
         <div class="col-md-10">
             <div id="points" class="dropdown">
                 <button class="btn btn-outline-secondary dropdown-toggle" name="page"
@@ -41,11 +41,11 @@
                     @{
                         if (Model == null)
                         {
-                            @:@Resource.Points
+                            @:Points
                         }
                         else if (Model.Points == 0)
                         {
-                            @:Resource.Points
+                            @:Points
                         }
                         else
                         {
@@ -69,7 +69,7 @@
     @Html.HiddenFor(p => p.Link, new { id = "page_link" })
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="@Resource.AddPage" class="btn btn-primary" />
+            <input type="submit" value="Add Page" class="btn btn-primary" />
         </div>
     </div>
 </div>

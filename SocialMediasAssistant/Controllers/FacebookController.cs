@@ -24,7 +24,7 @@ namespace SocialMediasAssistant.Controllers
         public JsonResult GetPagePosts(int order)
         {
 
-            return Json(context.GetFacebookPagePosts(CurrentUser.UserName)
+            return Json(context.FacebookPagePosts.Include("ApplicationUser").OrderBy(c => c.ID)
                 .Skip(10 * order).Take(10).ToList().Select(
                 c => new
                 {
@@ -38,7 +38,7 @@ namespace SocialMediasAssistant.Controllers
         public JsonResult GetPages(int order)
         {
 
-            return Json(context.GetFacebookPostPages(CurrentUser.UserName)
+            return Json(context.FacebookPostPages.Include("ApplicationUser").OrderBy(c => c.ID)
                 .Skip(10 * order).Take(10).ToList().Select(
                 c => new
                 {
@@ -178,23 +178,15 @@ namespace SocialMediasAssistant.Controllers
                 post.Page = context.FacebookPostPages.First(p => p.PageId == post.Page.PageId);
                 ModelState["Page.Link"].Errors.Clear();
             }
-            post.Page.Points = post.Points;
             ModelState["Page.Points"].Errors.Clear();
             if (ModelState.IsValid)
             {
                 context.FacebookPagePosts.Add(post);
                 lock (post.ApplicationUser)
                 {
-                    post.ApplicationUser.Points -= post.Points;
+                    post.ApplicationUser.Points -= (int)post.Points;
                 }
-                try
-                {
-                    await context.SaveChangesAsync();
-                }
-                catch(DbEntityValidationException e)
-                {
-
-                }
+                await context.SaveChangesAsync();
                 return RedirectToAction("PagePosts");
             }
             return View(post);

@@ -1,10 +1,10 @@
 ﻿@model SocialMediasAssistant.Models.FacebookPagePost
 
 @{
-    ViewBag.Title = Resource.AddFacebookPost;
+    ViewBag.Title = "AddFacebookPost";
 }
 
-<h2>@ViewBag.Title</h2>
+<h2>AddContent</h2>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.5/umd/popper.min.js"></script>
 <script src="~/Scripts/jquery-3.3.1.min.js"></script>
 <script src="~/Scripts/AddPagePost.js"></script>
@@ -14,17 +14,17 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>@Resource.Post</h4>
+        <h4>Content</h4>
         <hr />
         @Html.ValidationSummary(false, null, new { @class = "text-danger" })
         <div class="form-group">
-            <label for="page" class="col-form-label col-md-2">@Resource.FacebookPage</label>
+            <label for="page" class="col-form-label col-md-2">Facebook Page</label>
             <div class="col-md-10">
                 <div id="pages" class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" name="page"
                             type="button" id="pagesSelected" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
-                        @Resource.SelectPage
+                        Select your page
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     </div>
@@ -36,25 +36,25 @@
             <div class="col-md-10 input-group">
                 @Html.TextBoxFor(c => c.Link, new { @class = "form-control input-group-prepend", id = "postLink", disabled = "true" })
                 <button id="selectPost" type="button" class="btn" disabled data-toggle="modal" data-target="#postsModal">
-                    @Resource.ChoosePost
+                    Choose Post
                 </button>
             </div>
         </div>
         <div class="form-group">
-            <label for="points" class="control-label col-md-2">@Resource.Points</label>
+            <label for="points" class="control-label col-md-2">Points</label>
             <div class="col-md-10">
                 <div id="points" class="dropdown">
-                    <button name="Points" class="btn btn-outline-secondary dropdown-toggle"
+                    <button name="Points" class="btn btn-outline-secondary dropdown-toggle" name="page"
                             type="button" id="pagesSelected" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
                         @{
                             if (Model == null)
                             {
-                                @:@Resource.Points
+                                @:Points
                             }
                             else if (Model.Points == 0)
                             {
-                                @:@Resource.Points
+                                @:Points
                             }
                             else
                             {
@@ -76,7 +76,7 @@
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">@Resource.ChoosePost</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Select post</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -105,7 +105,7 @@
         @Html.HiddenFor(p => p.Page.AccessToken, new { id = "page_access_token" })
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="@Resource.AddPost" class="btn btn-primary" />
+                <input type="submit" value="Add Post" class="btn btn-primary" />
             </div>
         </div>
     </div>

@@ -16,9 +16,7 @@ namespace SocialMediasAssistant.Models
 
     public class ManageLoginsViewModel
     {
-        [Display(Name = "CurrentLogins", ResourceType = typeof(Resources.Resource))]
         public IList<UserLoginInfo> CurrentLogins { get; set; }
-        [Display(Name = "OtherLogins", ResourceType = typeof(Resources.Resource))]
         public IList<AuthenticationDescription> OtherLogins { get; set; }
     }
 

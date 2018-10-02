@@ -1,20 +1,20 @@
 ﻿@model SocialMediasAssistant.Models.IndexViewModel
 @{
-    ViewBag.Title = Resource.Manage;
+    ViewBag.Title = "Manage";
 }
 
 <h2>@ViewBag.Title.</h2>
 
 <p class="text-success">@ViewBag.StatusMessage</p>
 <div>
-    <h4>@Resource.AccountSettings</h4>
+    <h4>Change your account settings</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>@Resource.Points: </dt>
+        <dt>Points: </dt>
         <dd>
             
         </dd>
-        <dt>@Resource.ExternalLogins:</dt>
+        <dt>External Logins:</dt>
         <dd>
             <ul class="list-group col-md-2">
                 @foreach (var item in Model.Logins)
@@ -23,7 +23,7 @@
                     
                 }
             </ul>
-            @Html.ActionLink(Resource.Manage, "ManageLogins", null, new { @class="btn btn-primary"})
+            @Html.ActionLink("Manage", "ManageLogins", null, new { @class="btn btn-primary"})
         </dd>
         @*
             Phone Numbers can used as a second factor of verification in a two-factor authentication system.
@@ -78,6 +78,6 @@
                         </text>
                     }
                 }*@
-        
+        </dd>
     </dl>
 </div>

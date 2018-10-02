@@ -16,15 +16,14 @@ namespace SocialMediasAssistant.Models
 {
     public class Content
     {   public int ID { get; set; }
-        [UniqueLink(ErrorMessageResourceType = typeof(Resources.Resource), ErrorMessageResourceName = "DuplicatePost")]
-        [Required(ErrorMessageResourceName = "LinkRequired", ErrorMessageResourceType = typeof(Resources.Resource))]
+        [UniqueLink(ErrorMessage = "You have already added this post or page")]
+        [Required]
         [Index(IsUnique = true)]
-        [StringLength(100, ErrorMessageResourceType = typeof(Resources.Resource), ErrorMessageResourceName = "NotValidLink")]
+        [StringLength(100)]
         public string Link { set; get; }
         public virtual ApplicationUser ApplicationUser { get; set; }
-        [Range(5, 100, ErrorMessageResourceType = typeof(Resources.Resource), ErrorMessageResourceName = "PointsRange")]
-        [Required(ErrorMessageResourceType = typeof(Resources.Resource), ErrorMessageResourceName = "PointsRequired")]
-        [Display(Name = "Points", ResourceType = typeof(Resources.Resource))]
+        [Range(5, 100)]
+        [Required]
         public int Points { get; set; }
     }
 }

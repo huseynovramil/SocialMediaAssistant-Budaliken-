@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace SocialMediasAssistant.Controllers
 {
-    public class SocialMediaBaseController : BaseController
+    public class SocialMediaBaseController : Controller
     {
         protected ApplicationDbContext context = new ApplicationDbContext();
 

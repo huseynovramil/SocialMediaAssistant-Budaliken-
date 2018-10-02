@@ -5,12 +5,7 @@ VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialMediasAssistant", "SocialMediasAssistant\SocialMediasAssistant.csproj", "{DB7CC5B7-4A7D-4359-A971-730484C2D8DE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resources", "Resources\Resources.csproj", "{EE0B8B04-CDC7-4047-8F28-95768A67D164}"
-EndProject
 Global
-	GlobalSection(Performance) = preSolution
-		HasPerformanceSessions = true
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -20,10 +15,6 @@ Global
 		{DB7CC5B7-4A7D-4359-A971-730484C2D8DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB7CC5B7-4A7D-4359-A971-730484C2D8DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB7CC5B7-4A7D-4359-A971-730484C2D8DE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EE0B8B04-CDC7-4047-8F28-95768A67D164}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EE0B8B04-CDC7-4047-8F28-95768A67D164}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EE0B8B04-CDC7-4047-8F28-95768A67D164}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EE0B8B04-CDC7-4047-8F28-95768A67D164}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

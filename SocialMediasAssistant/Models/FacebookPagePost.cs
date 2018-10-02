@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Net.Http;
@@ -133,6 +132,7 @@ namespace SocialMediasAssistant.Models
                 .Append("/likes").Append(accessToken);
             return stringBuilder.ToString();
         }
+        
         public virtual FacebookPostPage Page { get; set; }
     }
 }

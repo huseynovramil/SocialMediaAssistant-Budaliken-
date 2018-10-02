@@ -1,30 +1,30 @@
 ﻿@model SocialMediasAssistant.Models.InstagramAccount
 @{
-    ViewBag.Title = Resource.AddAccount;
+    ViewBag.Title = "Add Account";
 }
 
-<h2>@ViewBag.Title</h2>
+<h2>Add Account</h2>
 @using (Html.BeginForm())
 {
     <div class="form-horizontal">
-        <h4>@Resource.AddAccount</h4>
+        <h4>Add Account</h4>
         <hr />
         @Html.ValidationSummary(false, null, new { @class = "text-danger" })
         <div class="form-group">
-            <label for="points" class="control-label col-md-2">@Resource.Points</label>
+            <label for="points" class="control-label col-md-2">Points</label>
             <div class="col-md-10">
                 <div id="points" class="dropdown">
-                    <button name="Points" class="btn btn-outline-secondary dropdown-toggle"
+                    <button name="Points" class="btn btn-outline-secondary dropdown-toggle" name="page"
                             type="button" id="pointsSelected" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
                         @{
                             if (Model == null)
                             {
-                                @:@Resource.Points
+                                @:Points
                             }
                             else if (Model.Points == 0)
                             {
-                                @:@Resource.Points
+                                @:Points
                             }
                             else
                             {
@@ -44,7 +44,7 @@
         </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input id="addAccount" type="submit" disabled class="btn btn-primary" value="@Resource.AddAccountConfirm" />
+                <input id="addAccount" type="submit" disabled class="btn btn-primary" value="Yes" />
             </div>
         </div>
         <input type="hidden" value="@ViewBag.Link" name="Link" />

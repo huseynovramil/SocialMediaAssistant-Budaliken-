@@ -1,42 +1,45 @@
 ﻿@{
-    ViewBag.Title = Resource.HomePage;
+    ViewBag.Title = "Home Page";
 }
 
 <div id="mainjumbotron" class="jumbotron d-none d-sm-block">
     <h1 class="jumbotron-main-text text-dark " style="width:28%;">Budaliken</h1>
     <br />
     <p class="jumbotron-text lead text-dark d-none d-lg-block" style="width:30%;">
-        @Resource.JumbotronInfo
+        Budaliken is a website for increasing
+        likes, followers, favs and etc. in sites like
+        Facebook, Instagram
     </p>
-    <p><a class="btn btn-primary btn-lg" href="@Url.Action("About", "Home", null, Request.Url.Scheme)">@Resource.LearnMore &raquo;</a></p>
+    <p><a class="btn btn-primary btn-lg" href="@Url.Action("About", "Home", null, Request.Url.Scheme)">Learn more &raquo;</a></p>
 </div>
 
 <div class="row">
     <div class="card-deck">
         <div class="card">
             <div class="card-body">
-                <h4>@Resource.GetFacebookLikes</h4>
+                <h2>Get Facebook Likes</h2>
                 <img class="img-fluid mx-auto" src="~/Images/Thumb-Icon-RGB-1024.png" />
                 <p>
-                    @Resource.GetFacebookLikesInfo
+                    Using Budaliken you can increase the number of likes of your posts through Facebook.
+
                 </p>
-                <p><a class="btn btn-primary" href="@Url.Action("AddPagePost", "Facebook", null, Request.Url.Scheme)">@Resource.LearnMore &raquo;</a></p>
+                <p><a class="btn btn-primary" href="@Url.Action("AddPagePost", "Facebook", null, Request.Url.Scheme)">Learn more &raquo;</a></p>
             </div>
         </div>
         <div class="card">
             <div class="card-body">
-                <h4>@Resource.GetInstagramFavs</h4>
+                <h2>Get Instagram favs</h2>
                 <img class="img-fluid mx-auto" src="~/Images/giphy.gif" />
-                <p>@Resource.GetInstagramFavsInfo</p>
-                <p><a class="btn btn-primary" href="@Url.Action("AddPost", "Instagram", null, Request.Url.Scheme)">@Resource.LearnMore &raquo;</a></p>
+                <p>Budaliken allows you to increase the favs of your post in Instagram</p>
+                <p><a class="btn btn-primary" href="@Url.Action("AddPost", "Instagram", null, Request.Url.Scheme)">Learn more &raquo;</a></p>
             </div>
         </div>
         <div class="card">
             <div class="card-body">
-                <h4>@Resource.GetFollowers</h4>
+                <h2>Get Followers</h2>
                 <img style="width:430px" class="img-fluid mx-auto" src="~/Images/ezgif-1-d41eb5747f.gif" />
-                <p>@Resource.GetFollowersInfo</p>
-                <p><a class="btn btn-primary" href="@Url.Action("AddAccount", "Instagram", null, Request.Url.Scheme)">@Resource.LearnMore &raquo;</a></p>
+                <p>Wanna increase the number of followers? Go ahead</p>
+                <p><a class="btn btn-primary" href="@Url.Action("AddAccount", "Instagram", null, Request.Url.Scheme)">Learn more &raquo;</a></p>
             </div>
         </div>
     </div>
