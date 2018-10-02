@@ -12,7 +12,7 @@
     @Html.AntiForgeryToken()
 
 <div class="form-horizontal">
-    <h4>Content</h4>
+    <h4>@Resource.InstagramPost</h4>
     <hr />
     @Html.ValidationSummary(false, null, new { @class = "text-danger" })
     <div class="form-group">
@@ -20,25 +20,25 @@
         <div class="col-md-10 input-group">
             @Html.TextBoxFor(c => c.Link, new { @class = "form-control input-group-prepend", id = "postLink" })
             <button id="selectPost" type="button" class="btn" data-toggle="modal" data-target="#postsModal">
-                Choose Post
+                @Resource.ChoosePost
             </button>
         </div>
     </div>
     <div class="form-group">
-        <label for="points" class="control-label col-md-2">Points</label>
+        <label for="points" class="control-label col-md-2">@Resource.Points</label>
         <div class="col-md-10">
             <div id="points" class="dropdown">
-                <button name="Points" class="btn btn-outline-secondary dropdown-toggle" name="page"
+                <button name="Points" class="btn btn-outline-secondary dropdown-toggle"
                         type="button" id="pagesSelected" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
                     @{
                         if (Model == null)
                         {
-                            @:Points
+                            @:@Resource.Points
                         }
                         else if (Model.Points == 0)
                         {
-                            @:Points
+                            @:@Resource.Points
                         }
                         else
                         {
@@ -63,7 +63,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Select post</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">@Resource.ChoosePost</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -78,7 +78,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">Choose</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">@Resource.Choose</button>
                 </div>
             </div>
         </div>
@@ -86,7 +86,7 @@
     </div>
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Add Post" class="btn btn-primary" />
+            <input type="submit" value="@Resource.AddPost" class="btn btn-primary" />
         </div>
     </div>
 </div>

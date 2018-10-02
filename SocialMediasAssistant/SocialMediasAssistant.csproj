@@ -202,11 +202,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Common\Cipher.cs" />
+    <Compile Include="Common\CultureHelper.cs" />
     <Compile Include="Common\CurrentUser.cs" />
     <Compile Include="Common\CustomAuthorizeAttribute.cs" />
+    <Compile Include="Common\Distributer.cs" />
     <Compile Include="Common\InstagramAPI.cs" />
     <Compile Include="Common\UniqueLinkAttribute.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\FacebookController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InstagramController.cs" />
@@ -306,12 +309,15 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\az.png" />
     <Content Include="Images\ezgif-1-d41eb5747f.gif" />
     <Content Include="Images\giphy.gif" />
     <Content Include="Images\nj2pD6.jpg" />
     <Content Include="Images\social-media-730x276.jpg" />
     <Content Include="Images\social-media.jpg" />
     <Content Include="Images\Thumb-Icon-RGB-1024.png" />
+    <Content Include="Images\tr.png" />
+    <Content Include="Images\en-us.png" />
     <Content Include="Scripts\AddInstagramAccount.js" />
     <Content Include="Scripts\AddInstagramPost.js" />
     <Content Include="Scripts\AddPage.js" />
@@ -437,6 +443,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Base\" />
     <Folder Include="Views\SosialMediaBase\" />
   </ItemGroup>
   <ItemGroup>
@@ -493,6 +500,12 @@
     <EmbeddedResource Include="Migrations\201809261645070_PointsContentRequired.resx">
       <DependentUpon>201809261645070_PointsContentRequired.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Resources\Resources.csproj">
+      <Project>{ee0b8b04-cdc7-4047-8f28-95768a67d164}</Project>
+      <Name>Resources</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

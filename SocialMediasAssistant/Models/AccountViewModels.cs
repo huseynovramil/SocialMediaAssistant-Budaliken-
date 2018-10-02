@@ -6,7 +6,7 @@ namespace SocialMediasAssistant.Models
     public class ExternalLoginConfirmationViewModel
     {
         [Required]
-        [Display(Name = "Username")]
+        [Display(Name = "Username", ResourceType = typeof(Resources.Resource))]
         public string Username { get; set; }
     }
 

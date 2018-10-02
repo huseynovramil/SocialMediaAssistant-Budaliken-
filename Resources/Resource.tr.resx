@@ -1,0 +1,324 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="About" xml:space="preserve">
+    <value>Hakkında</value>
+  </data>
+  <data name="Accounts" xml:space="preserve">
+    <value>Hesaplar</value>
+  </data>
+  <data name="AccountSettings" xml:space="preserve">
+    <value>Hesap ayarlarınızı değiştirin</value>
+  </data>
+  <data name="AddAccount" xml:space="preserve">
+    <value>Hesap ekle</value>
+  </data>
+  <data name="AddAccountConfirm" xml:space="preserve">
+    <value>Evet</value>
+  </data>
+  <data name="AddFacebookPost" xml:space="preserve">
+    <value>Facebook günderisi ekle</value>
+  </data>
+  <data name="AddPage" xml:space="preserve">
+    <value>Sayfa ekle</value>
+  </data>
+  <data name="AddPost" xml:space="preserve">
+    <value>Gönderi ekle</value>
+  </data>
+  <data name="AssociateProviderAfter" xml:space="preserve">
+    <value>hesapını ilişkilendirin</value>
+  </data>
+  <data name="AssociateProviderPrev" xml:space="preserve">
+    <value />
+  </data>
+  <data name="AssociationForm" xml:space="preserve">
+    <value>İlişkilendirme formu</value>
+  </data>
+  <data name="AuthenticationSuccessAfter" xml:space="preserve">
+    <value> ile başarıyla kayıt oldunuz.</value>
+  </data>
+  <data name="AuthenticationSuccessPrev" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Choose" xml:space="preserve">
+    <value>Seç</value>
+  </data>
+  <data name="ChoosePost" xml:space="preserve">
+    <value>Gönderini seç</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Kapat</value>
+  </data>
+  <data name="ConfirmedEmail" xml:space="preserve">
+    <value>E-postayı doğruladığınız için teşekkür ederiz</value>
+  </data>
+  <data name="ConfirmedEmailLink" xml:space="preserve">
+    <value>Giriş yapmak için tıklayınız</value>
+  </data>
+  <data name="ConfirmEmail" xml:space="preserve">
+    <value>E-postayı onaylayın</value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>İrtibat</value>
+  </data>
+  <data name="CurrentLogins" xml:space="preserve">
+    <value>Mevcut girişler</value>
+  </data>
+  <data name="DuplicatePost" xml:space="preserve">
+    <value>Bu sayfa ve ya gönderi daha önce eklenmiştir</value>
+  </data>
+  <data name="EarnPointsFacebookPages" xml:space="preserve">
+    <value>Facebook sayfalarını beğenerek puan kazanın.</value>
+  </data>
+  <data name="EarnPointsFacebookPosts" xml:space="preserve">
+    <value>Facebook gönderilerini beğenerek puan kazanın.</value>
+  </data>
+  <data name="EarnPointsInstagramPosts" xml:space="preserve">
+    <value>İnstagram gönderilerinı beğenerek puan kazanın.</value>
+  </data>
+  <data name="ExternalLogins" xml:space="preserve">
+    <value>Harici girişler</value>
+  </data>
+  <data name="FacebookPage" xml:space="preserve">
+    <value>Facebook Sayfası</value>
+  </data>
+  <data name="FacebookPosts" xml:space="preserve">
+    <value>Facebook gönderileri</value>
+  </data>
+  <data name="GetFacebookLikes" xml:space="preserve">
+    <value>Beğenilerini artır</value>
+  </data>
+  <data name="GetFacebookLikesInfo" xml:space="preserve">
+    <value>Budaliken'i kullanarak Facebook'taki gönderilerinizin beğenilme sayısını artırabilirsiniz.</value>
+  </data>
+  <data name="GetFollowers" xml:space="preserve">
+    <value>Takipçi kazan</value>
+  </data>
+  <data name="GetFollowersInfo" xml:space="preserve">
+    <value>Takipçi kazanmak mı istiyorsunuz?</value>
+  </data>
+  <data name="GetInstagramFavs" xml:space="preserve">
+    <value>İnstagram beğenileri kazan</value>
+  </data>
+  <data name="GetInstagramFavsInfo" xml:space="preserve">
+    <value>Budaliken, İnstagram gönderilerinizin beğenilerini artırmanızı sağlar.</value>
+  </data>
+  <data name="HomePage" xml:space="preserve">
+    <value>Ana Sayfa</value>
+  </data>
+  <data name="Info" xml:space="preserve">
+    <value>Hakkında</value>
+  </data>
+  <data name="InstagramPost" xml:space="preserve">
+    <value>İnstagram gönderisi</value>
+  </data>
+  <data name="JumbotronInfo" xml:space="preserve">
+    <value>Budaliken Facebook, İnstagram gibi sayfalarda beğenilerin, takipçilerin sayını artırmaya yardımcı olan bir sitedir.</value>
+  </data>
+  <data name="LearnMore" xml:space="preserve">
+    <value>Daha fazla</value>
+  </data>
+  <data name="LikePosts" xml:space="preserve">
+    <value>Gönderileri beğen</value>
+  </data>
+  <data name="LinkRequired" xml:space="preserve">
+    <value>Lütfen, linki giriniz</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Giriş</value>
+  </data>
+  <data name="Manage" xml:space="preserve">
+    <value>Yönet</value>
+  </data>
+  <data name="ManageLogins" xml:space="preserve">
+    <value>Harici girişlerinizi yönetin</value>
+  </data>
+  <data name="Marketing" xml:space="preserve">
+    <value>Marketing</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>İsim</value>
+  </data>
+  <data name="NotValidLink" xml:space="preserve">
+    <value>Link geçerli değil</value>
+  </data>
+  <data name="OtherLogins" xml:space="preserve">
+    <value>Diğer girişler</value>
+  </data>
+  <data name="Page" xml:space="preserve">
+    <value>Sayfa</value>
+  </data>
+  <data name="Pages" xml:space="preserve">
+    <value>Sayfalar</value>
+  </data>
+  <data name="Points" xml:space="preserve">
+    <value>Puanlar</value>
+  </data>
+  <data name="PointsRange" xml:space="preserve">
+    <value>Puanların miktarı 5 ve 100 arası geçerlidir</value>
+  </data>
+  <data name="PointsRequired" xml:space="preserve">
+    <value>Lütfen, puanların miktarını giriniz</value>
+  </data>
+  <data name="Post" xml:space="preserve">
+    <value>Gönderi</value>
+  </data>
+  <data name="Posts" xml:space="preserve">
+    <value>Gönderiler</value>
+  </data>
+  <data name="Refresh" xml:space="preserve">
+    <value>Yenile</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Kayıt Ol</value>
+  </data>
+  <data name="RegisteredLogins" xml:space="preserve">
+    <value>Kayıtlı girişler</value>
+  </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Kaldır</value>
+  </data>
+  <data name="RequestUsername" xml:space="preserve">
+    <value>Kullanıcı adınızı yazıb, Kayıt Ol tuşuna tıklayın</value>
+  </data>
+  <data name="SelectPage" xml:space="preserve">
+    <value>Sayfayı seç</value>
+  </data>
+  <data name="Support" xml:space="preserve">
+    <value>Destek</value>
+  </data>
+  <data name="Username" xml:space="preserve">
+    <value>Kullanıcı adı</value>
+  </data>
+  <data name="FollowUsers" xml:space="preserve">
+    <value>Takip et</value>
+  </data>
+  <data name="Hello" xml:space="preserve">
+    <value>Merhaba</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Ana Sayfa</value>
+  </data>
+  <data name="LikePages" xml:space="preserve">
+    <value>Sayfaları beğen</value>
+  </data>
+  <data name="LogOff" xml:space="preserve">
+    <value>Oturumu kapat</value>
+  </data>
+</root>
